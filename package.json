@@ -1,0 +1,29 @@
+{
+  "name": "core-error-predicates",
+  "version": "1.0.0",
+  "description": "Error predicate functions for operational errors thrown by node core",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/petkaantonov/core-error-predicates.git"
+  },
+  "keywords": [
+    "error",
+    "errors",
+    "patternmatching",
+    "dsl"
+  ],
+  "author": "Petka Antonov <petka_antonov@hotmail.com> (https://github.com/petkaantonov/)",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  },
+  "readmeFilename": "README.md",
+  "files": [
+    "LICENSE",
+    "index.js"
+  ]
+}
