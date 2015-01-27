@@ -1,6 +1,6 @@
 {
   "name": "core-error-predicates",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Error predicate functions for operational errors thrown by node core",
   "main": "index.js",
   "scripts": {
