@@ -52,6 +52,8 @@ testType("FileSystemError", "EBUSY", "ENOENT", "EOF", "EACCESS", "EAGAIN",
                             "ENAMETOOLONG", "EPERM", "ELOOP", "ENOTEMPTY",
                             "ENOSPC", "EIO", "EROFS", "ENODEV", "ESPIPE",
                             "ECANCELED", "ENFILE", "EXDEV");
+testType("ConnectError", "ECONNABORTED", "ECONNREFUSED", "ECONNRESET", "ETIMEDOUT");
+testType("BindError", "EADDRNOTAVAIL");
 testType("NetworkError", "EADDRINFO", "EADDRNOTAVAIL", "EAFNOSUPPORT",
                         "EALREADY", "ECONNABORTED", "ECONNREFUSED",
                         "ECONNRESET", "EDESTADDRREQ", "EHOSTUNREACH",

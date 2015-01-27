@@ -38,6 +38,8 @@ The `.globalize()` method makes all the predicate functions available in global 
  - [`SocketError`](#socketerror)
  - [`ProtocolError`](#protocolerror)
  - [`FileSystemError`](#filesystemerror)
+ - [`ConnectError`](#connecterror)
+ - [`BindError`](#binderror)
  - [`NetworkError`](#networkerror)
  - [`SSLError`](#sslerror)
 
@@ -112,6 +114,21 @@ When the error's code matches one of:
  - `ECANCELED`
  - `ENFILE`
  - `EXDEV`
+
+#####`ConnectError`
+
+When the error's code matches one of:
+
+ - `ECONNABORTED`
+ - `ECONNREFUSED`
+ - `ECONNRESET`
+ - `ETIMEDOUT`
+
+#####`BindError`
+
+When the error's code matches one of:
+
+ - `EADDRNOTAVAIL`
 
 #####`NetworkError`
 

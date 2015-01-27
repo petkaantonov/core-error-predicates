@@ -31,6 +31,8 @@ addError("FileSystemError", "EBUSY", "ENOENT", "EOF", "EACCESS", "EAGAIN",
                             "ENAMETOOLONG", "EPERM", "ELOOP", "ENOTEMPTY",
                             "ENOSPC", "EIO", "EROFS", "ENODEV", "ESPIPE",
                             "ECANCELED", "ENFILE", "EXDEV");
+addError("ConnectError", "ECONNABORTED", "ECONNREFUSED", "ECONNRESET", "ETIMEDOUT");
+addError("BindError", "EADDRNOTAVAIL");
 addError("NetworkError", "EADDRINFO", "EADDRNOTAVAIL", "EAFNOSUPPORT",
                         "EALREADY", "ECONNABORTED", "ECONNREFUSED",
                         "ECONNRESET", "EDESTADDRREQ", "EHOSTUNREACH",
