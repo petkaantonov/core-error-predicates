@@ -54,6 +54,7 @@ testType("FileSystemError", "EBUSY", "ENOENT", "EOF", "EACCESS", "EAGAIN",
                             "ECANCELED", "ENFILE", "EXDEV");
 testType("ConnectError", "ECONNABORTED", "ECONNREFUSED", "ECONNRESET", "ETIMEDOUT");
 testType("BindError", "EADDRNOTAVAIL");
+testType("AddressNotFoundError", "ENOTFOUND");
 testType("NetworkError", "EADDRINFO", "EADDRNOTAVAIL", "EAFNOSUPPORT",
                         "EALREADY", "ECONNABORTED", "ECONNREFUSED",
                         "ECONNRESET", "EDESTADDRREQ", "EHOSTUNREACH",
@@ -61,7 +62,7 @@ testType("NetworkError", "EADDRINFO", "EADDRNOTAVAIL", "EAFNOSUPPORT",
                         "ENONET", "ENOTCONN", "ENOTSOCK", "ENOTSUP", "EPIPE",
                         "EPROTO",  "EPROTONOSUPPORT", "EPROTOTYPE",
                         "ETIMEDOUT", "EAIFAMNOSUPPORT", "EAISERVICE",
-                        "EAISOCKTYPE", "ESHUTDOWN");
+                        "EAISOCKTYPE", "ESHUTDOWN", "ENOTFOUND");
 
 describe("SSLError", function() {
     specify("returns true when the direct error begins with the SSL error message", function() {

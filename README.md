@@ -40,6 +40,7 @@ The `.globalize()` method makes all the predicate functions available in global 
  - [`FileSystemError`](#filesystemerror)
  - [`ConnectError`](#connecterror)
  - [`BindError`](#binderror)
+ - [`AddressNotFoundError`](#addressnotfounderror)
  - [`NetworkError`](#networkerror)
  - [`SSLError`](#sslerror)
 
@@ -130,6 +131,12 @@ When the error's code matches one of:
 
  - `EADDRNOTAVAIL`
 
+#####`AddressNotFoundError`
+
+When the error's code matches one of:
+
+ - `ENOTFOUND`
+
 #####`NetworkError`
 
 When the error's code matches one of:
@@ -160,6 +167,7 @@ When the error's code matches one of:
  - `EAISERVICE`
  - `EAISOCKTYPE`
  - `ESHUTDOWN`
+ - `ENOTFOUND`
 
 #####`SSLError`
 

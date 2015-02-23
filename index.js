@@ -33,6 +33,7 @@ addError("FileSystemError", "EBUSY", "ENOENT", "EOF", "EACCESS", "EAGAIN",
                             "ECANCELED", "ENFILE", "EXDEV");
 addError("ConnectError", "ECONNABORTED", "ECONNREFUSED", "ECONNRESET", "ETIMEDOUT");
 addError("BindError", "EADDRNOTAVAIL");
+addError("AddressNotFoundError", "ENOTFOUND");
 addError("NetworkError", "EADDRINFO", "EADDRNOTAVAIL", "EAFNOSUPPORT",
                         "EALREADY", "ECONNABORTED", "ECONNREFUSED",
                         "ECONNRESET", "EDESTADDRREQ", "EHOSTUNREACH",
@@ -40,7 +41,7 @@ addError("NetworkError", "EADDRINFO", "EADDRNOTAVAIL", "EAFNOSUPPORT",
                         "ENONET", "ENOTCONN", "ENOTSOCK", "ENOTSUP", "EPIPE",
                         "EPROTO",  "EPROTONOSUPPORT", "EPROTOTYPE",
                         "ETIMEDOUT", "EAIFAMNOSUPPORT", "EAISERVICE",
-                        "EAISOCKTYPE", "ESHUTDOWN");
+                        "EAISOCKTYPE", "ESHUTDOWN", "ENOTFOUND");
 
 errors.push({
     name: "SSLError",
