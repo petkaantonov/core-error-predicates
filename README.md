@@ -54,7 +54,7 @@ When the error's code matches one of:
 
 When the error's code matches one of:
 
- - `EACCESS`
+ - `EACCES`
  - `EPERM`
 
 #####`EOFError`
@@ -96,7 +96,7 @@ When the error's code matches one of:
  - `EBUSY`
  - `ENOENT`
  - `EOF`
- - `EACCESS`
+ - `EACCES`
  - `EAGAIN`
  - `EBADF`
  - `EMFILE`

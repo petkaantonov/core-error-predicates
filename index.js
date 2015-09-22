@@ -19,14 +19,14 @@ function addError(name, code) {
 }
 
 addError("FileNotFoundError", "ENOENT");
-addError("FileAccessError", "EACCESS", "EPERM");
+addError("FileAccessError", "EACCES", "EPERM");
 addError("EOFError", "EOF");
 addError("UnknownHostError", "EADDRINFO");
 addError("SocketError", "EISCONN", "ENOTCONN", "ENOTSOCK",
                         "ENOTSUP", "EPROTOTYPE", "EAIFAMNOSUPPORT",
                         "EAISERVICE");
 addError("ProtocolError", "EPROTO", "EPROTONOSUPPORT", "EPROTOTYPE");
-addError("FileSystemError", "EBUSY", "ENOENT", "EOF", "EACCESS", "EAGAIN",
+addError("FileSystemError", "EBUSY", "ENOENT", "EOF", "EACCES", "EAGAIN",
                             "EBADF", "EMFILE", "ENOTDIR", "EISDIR", "EEXIST",
                             "ENAMETOOLONG", "EPERM", "ELOOP", "ENOTEMPTY",
                             "ENOSPC", "EIO", "EROFS", "ENODEV", "ESPIPE",

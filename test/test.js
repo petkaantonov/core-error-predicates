@@ -40,14 +40,14 @@ function testType(type, codes) {
 }
 
 testType("FileNotFoundError", "ENOENT");
-testType("FileAccessError", "EACCESS", "EPERM");
+testType("FileAccessError", "EACCES", "EPERM");
 testType("EOFError", "EOF");
 testType("UnknownHostError", "EADDRINFO");
 testType("SocketError", "EISCONN", "ENOTCONN", "ENOTSOCK",
                         "ENOTSUP", "EPROTOTYPE", "EAIFAMNOSUPPORT",
                         "EAISERVICE");
 testType("ProtocolError", "EPROTO", "EPROTONOSUPPORT", "EPROTOTYPE");
-testType("FileSystemError", "EBUSY", "ENOENT", "EOF", "EACCESS", "EAGAIN",
+testType("FileSystemError", "EBUSY", "ENOENT", "EOF", "EACCES", "EAGAIN",
                             "EBADF", "EMFILE", "ENOTDIR", "EISDIR", "EEXIST",
                             "ENAMETOOLONG", "EPERM", "ELOOP", "ENOTEMPTY",
                             "ENOSPC", "EIO", "EROFS", "ENODEV", "ESPIPE",
