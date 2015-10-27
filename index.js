@@ -5,7 +5,7 @@ function addError(name, code) {
     var re = new RegExp("^(" + codes.join("|") + ")$");
     errors.push({
         name: name,
-        predicate: function(e) {
+        class: createClass(name, code, function(e) {
             if (!e) return false;
             if ("cause" in e && typeof e.cause.code === "string") {
                 return re.test(e.cause.code);
@@ -14,8 +14,34 @@ function addError(name, code) {
             } else {
                 return false;
             }
+        })
+    });
+}
+
+function createClass(name, defaultCode, predicate) {
+    var CustomError = (new Function('name', 'defaultCode', 'predicate', [
+            '"use strict";',
+            'return function ' + name + '(message, code) {',
+            '  if (this === undefined) return predicate(message);',
+            '  Error.captureStackTrace(this, "' + name + '");',
+            '  Error.call(this);',
+            '  this.name = name;',
+            '  this.message = message;',
+            '  this.code = code === undefined ? defaultCode : code;',
+            '}'
+        ].join('\n')))(name, defaultCode, predicate);
+
+    CustomError.prototype = Object.create(Error.prototype, {
+        constructor: {
+            value: CustomError,
+            enumerable: false,
+            writable: true,
+            configurable: true
         }
     });
+    Object.setPrototypeOf(CustomError, Error);
+
+    return CustomError;
 }
 
 addError("FileNotFoundError", "ENOENT");
@@ -45,7 +71,7 @@ addError("NetworkError", "EADDRINFO", "EADDRNOTAVAIL", "EAFNOSUPPORT",
 
 errors.push({
     name: "SSLError",
-    predicate: function(e) {
+    class: createClass("SSLError", ["SSLERROR"], function(e) {
         var re = /^SSL Error:/;
         if (!e) return false;
         if ("cause" in e && typeof e.cause.message === "string") {
@@ -55,18 +81,18 @@ errors.push({
         } else {
             return false;
         }
-    }
+    })
 });
 
 
 errors.forEach(function(error) {
-    module.exports[error.name] = error.predicate;
+    module.exports[error.name] = error.class;
 });
 
 module.exports.globalize = function() {
     errors.forEach(function(error) {
         if (global[error.name] === undefined) {
-            global[error.name] = error.predicate;
+            global[error.name] = error.class;
         }
     });
     return this;
