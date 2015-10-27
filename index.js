@@ -22,7 +22,7 @@ function createClass(name, defaultCode, predicate) {
     var CustomError = (new Function('name', 'defaultCode', 'predicate', [
             '"use strict";',
             'return function ' + name + '(message, code) {',
-            '  if (this === undefined) return predicate(message);',
+            '  if (this === undefined) return message instanceof ' + name + ' ? true : predicate(message);',
             '  Error.captureStackTrace(this, "' + name + '");',
             '  Error.call(this);',
             '  this.name = name;',
