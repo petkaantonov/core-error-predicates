@@ -29,6 +29,17 @@ The module exports various error predicates and the `.globalize()` method.
 
 The `.globalize()` method makes all the predicate functions available in global scope for convenience. If the name is already taken for a predicate in global scope, it will not be overwritten.
 
+Predicates can be turned into instances of their error types by using the `new` operator:
+
+```js
+try {
+  throw new FileNotFoundError("A file was not found!");
+}
+catch (e) {
+  assert(FileNotFoundError(e) === true);
+}
+```
+
 ##Error predicates
 
  - [`FileNotFoundError`](#filenotfounderror)

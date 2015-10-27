@@ -30,11 +30,65 @@ function testType(type, codes) {
                     assert.strictEqual(predicate(errorWithCause(code)), true);
                 });
             });
+
+            describe("creates new instance, without arguments", function () {
+                specify(code, function () {
+                    var instance = new predicate();
+                    assert.strictEqual(instance instanceof Error, true);
+                    assert.strictEqual(instance instanceof predicate, true);
+                    assert.strictEqual(instance.code, codes[0]);
+                });
+            });
+
+            describe("creates a new instance, with message argument", function () {
+                specify(code, function () {
+                    var instance = new predicate("Something went wrong");
+                    assert.strictEqual(instance.code, codes[0]);
+                    assert.strictEqual(instance.message, "Something went wrong");
+                });
+            });
+
+            describe("creates a new instance, with message and code arguments", function () {
+                specify(code, function () {
+                    var instance = new predicate("Something went wrong", code);
+                    assert.strictEqual(instance.code, code);
+                    assert.strictEqual(instance.message, "Something went wrong");
+                });
+            });
+
+            describe("predicate matches instance with default code", function () {
+                specify(code, function () {
+                    var instance = new predicate();
+                    assert.strictEqual(predicate(instance), true);
+                });
+            });
+
+            describe("predicate matches instance with specific code", function () {
+                specify(code, function () {
+                    var instance = new predicate("Error", code);
+                    assert.strictEqual(predicate(instance), true);
+                });
+            });
+
         });
 
         it("doesn't cause errors with weird objects", function() {
             assert.strictEqual(predicate(false), false);
             assert.strictEqual(predicate(Object.create(null)), false);
+        });
+
+        it("matches instance with specific code, even if the code is not recognized", function () {
+            var instance = new predicate("Error", "nonsense");
+            assert.strictEqual(predicate(instance), true);
+        });
+
+        it('is throwable', function () {
+            try {
+                throw new predicate("Error");
+            }
+            catch (e) {
+                assert.strictEqual(predicate(e), true);
+            }
         });
     });
 }
@@ -78,5 +132,19 @@ describe("SSLError", function() {
     specify("doesn't cause errors with weird objects", function() {
         assert.strictEqual(SSLError(false), false);
         assert.strictEqual(SSLError(Object.create(null)), false);
+    });
+
+    it("matches instance with specific code, even if the code is not recognized", function () {
+        var instance = new SSLError("Error", "nonsense");
+        assert.strictEqual(SSLError(instance), true);
+    });
+
+    it('is throwable', function () {
+        try {
+            throw new SSLError("Error");
+        }
+        catch (e) {
+            assert.strictEqual(SSLError(e), true);
+        }
     });
 });
