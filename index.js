@@ -39,7 +39,12 @@ function createClass(name, defaultCode, predicate) {
             configurable: true
         }
     });
-    Object.setPrototypeOf(CustomError, Error);
+    if (typeof Object.setPrototypeOf === 'function') {
+        Object.setPrototypeOf(CustomError, Error);
+    }
+    else {
+        CustomError.__proto__ = Error;
+    }
 
     return CustomError;
 }
